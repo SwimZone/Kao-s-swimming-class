@@ -816,9 +816,13 @@ body.contact .home-button:hover {
   }
 
   body.swimming1 .content {
+    display: flex;
     flex-direction: column;
-    height: auto;
-    padding: 20px 10px;
+    justify-content: flex-start; /* 不要置中，避免擠壓 */
+    align-items: center;
+    min-height: auto; /* 或改成 height: auto; */
+    padding-top: 100px; /* 往下留白 */
+    padding-bottom: 20px;
   }
 
   body.swimming1 .left-side,
@@ -832,7 +836,10 @@ body.contact .home-button:hover {
   body.swimming1 .right-side p,
   body.swimming1 .right-side a {
     font-size: 20px !important;
-    line-height: 1.5; /* 行距是字體大小的 1.5 倍 */
+    font-size: 20px !important;
+    line-height: 1; /* ✅ 原本是 1.5，調大讓行距更寬鬆 */
+    margin: 3px 0; /* ✅ 增加段落上下的空隙 */
+    text-align: center; /* ✅ 確保在手機上置中顯示 */
   }
 
   .left-title {
@@ -844,6 +851,15 @@ body.contact .home-button:hover {
     margin-bottom: 20px;
     word-break: break-word;
     white-space: normal;
+  }
+  body.swimming1 .left-side {
+    position: relative;
+    top: 130px; /* 向下移 40px */
+    margin-bottom: 4px;
+  }
+
+  body.swimming1 .right-side.container {
+    margin-top: 40px; /* 若需要更多間距可調整為 40px 等 */
   }
 }
 
@@ -888,6 +904,14 @@ body.contact .home-button:hover {
     display: flex;
     align-items: center; /* 垂直置中 */
     color: #4d3f28 !important; /* 文字顏色 */
+    display: flex !important;
+    flex-direction: column; /* 文字垂直堆疊 */
+    justify-content: center; /* 靠底部 */
+    height: 100%; /* 撐滿父區塊 */
+    padding: 20px !important;
+    color: #4d3f28 !important;
+    max-width: 100% !important;
+    text-align: center !important;
   }
 
   .text-block h1 {
