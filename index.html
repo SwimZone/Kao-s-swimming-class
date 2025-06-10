@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kao's Swimming Class</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 引入 Google Fonts 字型 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 引入外部 CSS 樣式表 -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="index">
+    <!-- 🔸 漢堡選單按鈕 + 導覽列：適合行動裝置的導覽列設計 -->
+    <div class="hamburger-menu">
+      <!-- 菜單切換按鈕（點擊時呼叫 JavaScript 函式） -->
+      <button class="menu-toggle" onclick="toggleMenu()">≡</button>
+
+      <!-- 導覽連結項目，預設可能為隱藏狀態 -->
+      <div class="menu-items" id="menuItems">
+        <a href="index.html">首頁</a>
+        <a href="swimming1.html">課程收費</a>
+        <a href="swimming2.html">教練簡介</a>
+        <a href="swimming3.html">教學地點</a>
+        <a href="Contact Us.html">聯絡我們</a>
+      </div>
+    </div>
+
+    <!-- 🔸 網站標頭（Header）：包含 Logo 圖片與標題 -->
+    <div class="header">
+      <img src="logo.png" alt="課程 Logo" class="logo" />
+      <h1>Kao's Swimming Class</h1>
+    </div>
+
+    <!-- 🔸 圖片導覽區（Gallery）：三個連結圖片 -->
+    <div class="gallery">
+      <!-- 圖片區塊 1：連結至課程收費頁 -->
+      <div class="image-box">
+        <a href="swimming1.html">
+          <img src="swimming1.jpg" alt="游泳1" />
+          <div class="overlay-text">Price List</div>
+        </a>
+      </div>
+
+      <!-- 圖片區塊 2：連結至教練簡介頁 -->
+      <div class="image-box">
+        <a href="swimming2.html">
+          <img src="swimming2.jpg" alt="游泳2" />
+          <div class="overlay-text">About Coach</div>
+        </a>
+      </div>
+
+      <!-- 圖片區塊 3：連結至教學地點頁 -->
+      <div class="image-box">
+        <a href="swimming3.html">
+          <img src="swimming3.jpg" alt="游泳3" />
+          <div class="overlay-text">Areas We Serve</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 🔸 主要文字內容區塊（簡介 + 按鈕） -->
+    <div class="container">
+      <p>幼兒｜兒童｜成人 游泳教學<br />競技泳姿調整<br /></p>
+
+      <!-- 「聯絡我們」按鈕，連結至聯絡頁面 -->
+      <a href="Contact Us.html" class="button-link">Contact Us</a>
+    </div>
+
+    <!-- 🔸 JavaScript：切換導覽列的顯示狀態 -->
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("menuItems");
+        // 如果目前顯示為 flex，則切換為 none；反之亦然
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+      }
+    </script>
+  </body>
+</html>

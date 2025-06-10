@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 設定響應式視窗寬度 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>教學地點</title>
+
+    <!-- 再次指定 viewport（其實上方已有，建議保留一個即可） -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 引入 Google Fonts（Poppins 字型） -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 引入樣式表 -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <!-- 設定 body 類別為 swimming3，便於專屬樣式使用 -->
+  <body class="swimming3">
+    <!-- 🔸 漢堡選單按鈕 + 導覽列 -->
+    <div class="hamburger-menu">
+      <!-- 切換選單的按鈕 -->
+      <button class="menu-toggle" onclick="toggleMenu()">≡</button>
+
+      <!-- 導覽選單連結 -->
+      <div class="menu-items" id="menuItems">
+        <a href="index.html">首頁</a>
+        <a href="swimming1.html">課程收費</a>
+        <a href="swimming2.html">教練簡介</a>
+        <a href="swimming3.html">教學地點</a>
+        <a href="Contact Us.html">聯絡我們</a>
+      </div>
+    </div>
+
+    <!-- 🔸 主要內容區：左右分欄 -->
+    <div class="swimming3-content">
+      <!-- 左側：地點介紹文字與按鈕 -->
+      <div class="left-side">
+        <h1>Where We <br />Teach Swimming</h1>
+        <p>我們提供以下地區的教學與訓練</p>
+        <p>雙北｜基隆｜桃園｜新竹</p>
+        <p>皆可到府教學</p>
+
+        <!-- 按鈕導向聯絡頁面 -->
+        <a href="Contact Us.html" class="button-link">聯繫我們</a>
+      </div>
+
+      <!-- 右側：目前為空白區，可用來放背景圖或插圖 -->
+      <div class="right-side">
+        <!-- 右側空白，可放圖片或其他內容 -->
+      </div>
+    </div>
+
+    <!-- 🔸 漢堡選單控制功能 -->
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("menuItems");
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+      }
+    </script>
+  </body>
+</html>

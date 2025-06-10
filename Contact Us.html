@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 設定響應式設計 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>聯絡我們</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body class="contact">
+    <!-- 🔸 回首頁按鈕，點擊後回到首頁 index.html -->
+    <a href="index.html" class="home-button">回首頁</a>
+
+    <div class="social-links">
+      <img
+        src="ins.png"
+        alt="Instagram"
+        onclick="showMessage('資訊更新中，欲報名可直接電洽')"
+      />
+      <img
+        src="line.png"
+        alt="Line"
+        onclick="showMessage('資訊更新中，欲報名可直接電洽')"
+      />
+    </div>
+
+    <script>
+      function showMessage(message) {
+        alert(message);
+      }
+    </script>
+  </body>
+</html>

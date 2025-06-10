@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>關於教練</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="swimming2">
+    <div class="hamburger-menu">
+      <button class="menu-toggle" onclick="toggleMenu()">≡</button>
+      <div class="menu-items" id="menuItems" style="display: none">
+        <a href="index.html">首頁</a>
+        <a href="swimming1.html">課程收費</a>
+        <a href="swimming2.html">教練簡介</a>
+        <a href="swimming3.html">教學地點</a>
+        <a href="Contact Us.html">聯絡我們</a>
+      </div>
+    </div>
+
+    <section class="section section-coach">
+      <div class="coach-left">
+        <div class="text-block">
+          <p>擁有選手經驗10年<br />教學年資10年</p>
+          <p>現職<br />北市國小泳隊教練</p>
+          <p>擅長引導式教學與技巧調整<br />安全至上&nbsp;寓教於樂</p>
+        </div>
+      </div>
+      <div class="coach-right"></div>
+    </section>
+
+    <section class="section section-experience">
+      <div class="experience-top">
+        <div class="experience-block">
+          <h2>全國小學運動會</h2>
+          <p>114年 3金1銀4銅</p>
+          <p>113年 2銀2銅</p>
+          <p>112年 1金4銀2銅</p>
+        </div>
+        <div class="experience-block">
+          <h2>全國北區分齡游泳錦標賽</h2>
+          <p>5金4銀9銅</p>
+        </div>
+      </div>
+      <div class="experience-bottom">
+        <a href="swimming3.html" class="learn-more-btn">Learn More</a>
+      </div>
+    </section>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("menuItems");
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+      }
+
+      const coachTextBlocks = document.querySelectorAll(
+        ".section-coach .text-block"
+      );
+      const experienceTop = document.querySelector(".experience-top");
+      const learnMoreBtn = document.querySelector(".learn-more-btn");
+
+      function handleScroll() {
+        const isMobile = window.innerWidth <= 768;
+
+        // 教練區塊文字淡入淡出
+        const coachTop = document
+          .querySelector(".section-coach")
+          .getBoundingClientRect().top;
+        coachTextBlocks.forEach((block) => {
+          block.style.opacity =
+            coachTop < window.innerHeight * 0.7 && coachTop > -400 ? "1" : "0";
+          block.style.transition = "opacity 0.6s ease";
+        });
+
+        // 第二區塊經歷淡入淡出
+        const expTop = document
+          .querySelector(".section-experience")
+          .getBoundingClientRect().top;
+        if (expTop < window.innerHeight * 0.8 && expTop > -400) {
+          experienceTop.classList.add("show");
+        } else {
+          experienceTop.classList.remove("show");
+        }
+      }
+
+      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("load", handleScroll);
+      window.addEventListener("resize", handleScroll);
+
+      
+    </script>
+  </body>
+</html>

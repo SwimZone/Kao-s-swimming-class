@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>課程收費</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 引入外部 CSS 樣式表 -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <!-- 設定 body 類別為 swimming1，方便該頁專用樣式控制 -->
+  <body class="swimming1">
+    <!-- 🔸 漢堡選單按鈕 + 導覽列：負責導覽功能，適用於行動裝置 -->
+    <div class="hamburger-menu">
+      <!-- 選單切換按鈕 -->
+      <button class="menu-toggle" onclick="toggleMenu()">≡</button>
+
+      <!-- 導覽連結列表 -->
+      <div class="menu-items" id="menuItems">
+        <a href="index.html">首頁</a>
+        <a href="swimming1.html">課程收費</a>
+        <a href="swimming2.html">教練簡介</a>
+        <a href="swimming3.html">教學地點</a>
+        <a href="Contact Us.html">聯絡我們</a>
+      </div>
+    </div>
+
+    <!-- 🔸 主要內容區塊：兩欄式設計 -->
+    <div class="content">
+      <!-- 左側區塊：標題 -->
+      <div class="left-side">
+        <div class="left-title">Price list</div>
+      </div>
+
+      <!-- 右側內容區塊：課程收費細節與導引按鈕 -->
+      <div class="right-side container">
+        <!-- 空白標題（保留空間，可能是為了版面對齊） -->
+        <h1>&nbsp;&nbsp;</h1>
+
+        <!-- 課程價格列表 -->
+        <p>一對一&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每堂 $1,600</p>
+        <p>一對二&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每堂 $2,000</p>
+        <p>團體班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每堂 $3,000</p>
+
+        <!-- 備註說明 -->
+        <p>*可單堂報名<br />*團體班為最多五名學生</p>
+
+        <!-- 前往下一頁（教練簡介）的按鈕 -->
+        <a href="swimming2.html" class="home-button">Learn More</a>
+      </div>
+    </div>
+
+    <!-- 🔸 JavaScript：控制導覽選單的開關 -->
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("menuItems");
+        // 如果目前為 flex 顯示，就切換為 none；否則顯示為 flex
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+      }
+    </script>
+  </body>
+</html>
