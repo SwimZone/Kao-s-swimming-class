@@ -812,25 +812,27 @@ body.contact .home-button:hover {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    min-height: 100vh;
-    height: auto; /* ✅ 新增這行，讓高度自動延伸 */
   }
 
   body.swimming1 .content {
+    flex: 1; /* 讓它佔滿剩餘空間 */
     display: flex;
-    justify-content: flex-start; /* 不要置中，避免擠壓 */
-    align-items: center;
-    height: auto;
-    flex-direction: column; /* 上下排列 */
-    gap: clamp(4vh, 8vh, 80vh); /* 上下區塊間距，隨螢幕寬度變化 */
-    padding: 10vh 5vw 5vh 5vw;
+    flex-direction: column;
+    justify-content: space-between; /* 讓內容上下分開 */
+    padding: 10vh 5vw 5vh 4vw;
   }
 
-  body.swimming1 .left-side,
-  body.swimming1 .right-side {
+  body.swimming1 .left-side {
     flex: unset;
-    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
     padding: clamp(8px, 3.3vh, 180px);
+  }
+
+  body.swimming1 .right-side {
+   align-self: center; /* 可選，讓它置中不會偏左 */
+  max-width: 800px;
+  padding: clamp(8px, 3.3vh, 180px);
   }
 
   body.swimming1 .right-side p,
@@ -846,19 +848,19 @@ body.contact .home-button:hover {
     left: 0;
     position: static !important;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
     word-break: break-word;
     white-space: normal;
   }
   body.swimming1 .left-side {
     position: relative;
-    top: 26vh; /* 距離視窗高度的10% */
-    margin-bottom: 1.5vh; /* ← 跟著螢幕高度變化 */
+    top: 27vh; /* 距離視窗高度的10% */
+    margin-bottom: 1.1vh; /* ← 跟著螢幕高度變化 */
   }
 
   body.swimming1 .right-side.container {
     margin-top: clamp(6px, 1.2vh, 60px);
-    margin-bottom: clamp(3px, 2vh, 10px);
+    margin-bottom: clamp(1.5px, 1.3vh, 6px);
   }
 }
 
