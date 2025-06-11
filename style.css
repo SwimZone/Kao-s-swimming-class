@@ -267,13 +267,14 @@ body.swimming1 .container ul li {
 .section-coach {
   /* 背景圖片教練介紹 */
   background-image: url("aboutcoach.png");
+  height: 100vh; /* ⬅️ 高度設為一個畫面高度 */
 }
 
 /* 左右分區 */
 .coach-left {
   flex: 1;
   display: flex;
-  align-items: flex-start; /* 改成靠上 */
+  align-items: center; /* ⬅️ 垂直置中 */
   justify-content: flex-end; /* 改成靠右 */
   padding-right: 8%; /* 改成右邊距 */
   /* padding-left: 8%; 這行移除或註解掉 */
@@ -290,7 +291,7 @@ body.swimming1 .container ul li {
   position: relative; /* 新增，搭配 top */
   left: -106px; /* 往右移20px */
   /* 或 right: 20px; 往左移20px */
-  top: 30px; /* 新增，往下 50px */
+  top: 45px; /* 新增，往下 50px */
   padding: 20px 50px; /* 新增，增加內距 */
   max-width: 600px; /* 新增，限制最大寬度 */
 
@@ -817,29 +818,26 @@ body.contact .home-button:hover {
 
   body.swimming1 .content {
     display: flex;
-    flex-direction: column;
     justify-content: flex-start; /* 不要置中，避免擠壓 */
     align-items: center;
-    min-height: auto; /* 或改成 height: auto; */
-    padding-top: 100px; /* 往下留白 */
-    padding-bottom: 20px;
+    height: auto;
+    flex-direction: column; /* 上下排列 */
+    gap: clamp(4vh, 8vh, 80vh); /* 上下區塊間距，隨螢幕寬度變化 */
+    padding: 10vh 5vw 5vh 5vw;
   }
 
   body.swimming1 .left-side,
   body.swimming1 .right-side {
     flex: unset;
     width: 100%;
-    padding: 20px;
-    text-align: center;
+    padding: clamp(8px, 3.3vh, 180px);
   }
 
   body.swimming1 .right-side p,
   body.swimming1 .right-side a {
-    font-size: 20px !important;
-    font-size: 20px !important;
-    line-height: 1; /* ✅ 原本是 1.5，調大讓行距更寬鬆 */
-    margin: 3px 0; /* ✅ 增加段落上下的空隙 */
-    text-align: center; /* ✅ 確保在手機上置中顯示 */
+    font-size: clamp(1rem, 2.5vh, 1.5rem); /* 根據螢幕寬度變化的字體大小 */
+    line-height: 1.5; /* 行距可保持不變或稍作調整 */
+    margin: clamp(2px, 1vw, 35px) 0; /* 上下間距也隨寬度調整 */
   }
 
   .left-title {
@@ -854,12 +852,13 @@ body.contact .home-button:hover {
   }
   body.swimming1 .left-side {
     position: relative;
-    top: 130px; /* 向下移 40px */
-    margin-bottom: 4px;
+    top: 26vh; /* 距離視窗高度的10% */
+    margin-bottom: 1.5vh; /* ← 跟著螢幕高度變化 */
   }
 
   body.swimming1 .right-side.container {
-    margin-top: 40px; /* 若需要更多間距可調整為 40px 等 */
+    margin-top: clamp(6px, 1.2vh, 60px);
+    margin-bottom: clamp(3px, 2vh, 10px);
   }
 }
 
@@ -902,7 +901,7 @@ body.contact .home-button:hover {
     top: 0 !important;
     max-width: 100% !important;
     display: flex;
-    align-items: center; /* 垂直置中 */
+    align-items: right; /* 垂直置中 */
     color: #4d3f28 !important; /* 文字顏色 */
     display: flex !important;
     flex-direction: column; /* 文字垂直堆疊 */
@@ -911,16 +910,17 @@ body.contact .home-button:hover {
     padding: 20px !important;
     color: #4d3f28 !important;
     max-width: 100% !important;
-    text-align: center !important;
+    text-align: right !important;
+    transform: translateX(50px);
   }
 
   .text-block h1 {
-    font-size: 2rem;
+    font-size: 10vw;
   }
 
   .text-block p {
-    font-size: 1.2rem;
-    margin: 30px 0;
+    font-size: 4vw;
+    margin: 13vw 0;
   }
 
   /* 區塊2：經歷文字區塊 */
@@ -936,14 +936,22 @@ body.contact .home-button:hover {
     color: white !important; /* 文字顏色改白 */
     border-radius: 0px; /* 圓角外框，美化樣式 */
     background-color: transparent !important; /* 取消半透明白底 */
+    max-width: 400px; /* 限制最大寬度 */
+    min-width: 200px; /* 設定最小寬度，避免過窄 */
+    width: 90%; /* 寬度隨螢幕調整 */
   }
 
   .experience-top {
     opacity: 1 !important;
+    display: flex;
+    justify-content: center; /* 或 space-between */
+    align-items: flex-start; /* 讓兩區塊頂端對齊 */
+    flex-wrap: wrap; /* 可避免手機時超出畫面 */
+    gap: clamp(20px, 5vw, 40px); /* 間距會隨螢幕寬度變化 */
   }
 
   .experience-block h2 {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .experience-block p {
@@ -951,9 +959,10 @@ body.contact .home-button:hover {
   }
 
   .experience-bottom .learn-more-btn {
-    bottom: 30px; /* 距離螢幕底部 40px */
-    right: 20px; /* 距離螢幕右邊 20px */
-    padding: 5px 5px; /* 按鈕大小 */
+    bottom: 6vw; /* 距離螢幕底部 */
+    right: 3vw; /* 距離螢幕右邊 */
+    padding: 2vw 2vw; /* 按鈕內距 */
+    font-size: 4vw; /* 按鈕文字大小 */
   }
 }
 
