@@ -791,7 +791,7 @@ body.contact .home-button:hover {
 @media screen and (max-width: 768px) {
   html,
   body.swimming1 {
-    height: 100%;
+    min-height: 100dvh; /* 使用動態 viewport 高度 */
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* 避免橫向捲軸造成的錯位 */
