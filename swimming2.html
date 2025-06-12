@@ -92,6 +92,37 @@
       window.addEventListener("scroll", handleScroll);
       window.addEventListener("load", handleScroll);
       window.addEventListener("resize", handleScroll);
+
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.innerWidth > 768) return; // 僅手機版執行
+
+        // 目標元素，請選擇要淡入淡出的文字區塊
+        const targets = document.querySelectorAll(
+          ".text-block, .experience-block"
+        );
+
+        // 初始加入淡入樣式，隱藏它們
+        targets.forEach((el) => el.classList.add("fade-in-section"));
+
+        // 建立 IntersectionObserver 監測元素是否進入視窗
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              } else {
+                entry.target.classList.remove("is-visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1, // 10% 進入視窗即觸發
+          }
+        );
+
+        // 開始監看每個目標元素
+        targets.forEach((el) => observer.observe(el));
+      });
     </script>
   </body>
 </html>
