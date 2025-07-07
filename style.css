@@ -547,6 +547,13 @@ body.swimming3 .menu-toggle {
   color: white;
 }
 
+/* video 頁面的漢堡按鈕顏色改成白色 */
+body.video-page .menu-toggle {
+  color: white;
+  position: relative; /* 或 fixed，如果它是固定在畫面上的 */
+  z-index: 9999; /* 確保在最上層 */
+}
+
 /* 隱藏的選單 */
 .menu-items {
   /* 下拉選單顯示 */
@@ -1070,4 +1077,276 @@ body.swimming3 {
   background-repeat: no-repeat !important;
   background-position: center center !important;
   background-attachment: scroll !important;
+}
+
+/*==== 影片頁面 ====*/
+body.video-page::before {
+  content: "";
+  position: fixed; /* ✅ 固定在視窗，不隨內容滑動 */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("backgroundvideo.png");
+  background-size: cover; /* ✅ 滿版但可能裁切 */
+  background-position: center top;
+  background-repeat: no-repeat;
+  z-index: -1; /* ✅ 背景圖在所有內容後面 */
+  pointer-events: none; /* ✅ 不影響點擊事件（避免干擾按鈕） */
+}
+.video-item {
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.video-item iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ✅ 只顯示一部影片的樣式 */
+.video-carousel .video-item {
+  display: none;
+}
+
+.video-carousel .video-item.active {
+  display: block;
+}
+
+body.video-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 水平置中 */
+
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  position: relative; /* ✅ 為了讓 ::before 相對定位 */
+  z-index: 0; /* ✅ 確保內容在背景圖上 */
+  overflow-x: hidden; /* 可選，避免手機出現水平捲軸 */
+  background-color: #2b5293; /* ✅ 背景底色還是保留 */
+}
+
+/* 標題樣式 */
+.video-header h1 {
+  padding-top: 10px; /* 或者減少 padding */
+  margin-top: 20px; /* 可調整上下距離 */
+  font-size: 4.5rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #2b5293, -2px -2px 4px #2b5293; /* 雙重陰影 */
+}
+
+/* 按鈕 */
+.learn-more-btn-center-btn {
+  position: absolute;
+  bottom: 40px; /* 距離底部 30px，可自行調整 */
+  left: 50%; /* 水平中心點 */
+  transform: translateX(-50%); /* 向左偏移寬度的一半，達到真正的置中 */
+  padding: 12px 24px;
+  background-color: #ffffff;
+  color: #2b5293;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 0px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 10; /* 確保它不會被其他東西蓋住 */
+}
+
+.learn-more-btn-center-btn:hover {
+  background-color: #2b5293;
+  color: #ffffff;
+  transform: translateX(-50%) scale(1.05);
+}
+
+/* 影片容器 */
+
+.video-item:nth-child(1),
+.video-item:nth-child(4) {
+  --arc-offset: 5px;
+}
+
+.video-item:nth-child(2),
+.video-item:nth-child(3) {
+  --arc-offset: 5px;
+}
+
+.video-item:hover {
+  transform: translateY(calc(var(--arc-offset) - 10px)) scale(1.08);
+  z-index: 2;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Carousel 容器 */
+.video-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  max-width: none; /* ✅ 不限制最大寬度 */
+  padding: 0 5vw; /* ✅ 給左右預留空間，避免貼邊 */
+}
+
+.video-carousel .video-item.active {
+  display: block;
+}
+
+.arrow {
+  font-size: 5rem;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.left-arrow {
+  left: 25vw; /* 可依畫面調整距離 */
+}
+
+.right-arrow {
+  right: 25vw;
+}
+
+.arrow:hover {
+  transform: scale(1.2);
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* ===響應式調整=== */
+@media screen and (max-width: 768px) {
+  /* 讓整頁容器是 flex 垂直置中 */
+  .video-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    box-sizing: border-box;
+    height: 100vh; /* ✅ 占滿整個可視區，高度才能精準置中 */
+    position: relative;
+  }
+
+  /* 標題置中 */
+  .video-header {
+    width: 100%;
+  }
+
+  .video-header h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 20; /* 調整這裡以控制與頂部的距離 */
+    margin-bottom: 20px; /* 例如 40px */
+  }
+
+  .video-carousel {
+    flex: 1; /* ✅ 讓這區佔滿中間可用空間 */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* ✅ 影片垂直置中 */
+    width: 100%;
+    margin-top: -40px; /* 👈 加這行讓影片往上靠近標題 */
+  }
+
+  /* 影片區容器 */
+  .video-wrapper {
+    position: relative;
+    width: 90vw;
+    max-width: 600px;
+    aspect-ratio: 16 / 9; /* 16:9比例 */
+    margin-bottom: 40px; /* 調整影片與下方間距 */
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 影片iframe全寬高填滿 */
+  .video-item iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* 箭頭按鈕 */
+  .left-arrow,
+  .right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    z-index: 10;
+    background: rgba(0.1, 0.1, 0.1, 0.1);
+    color: white;
+    width: 50px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .left-arrow {
+    left: 3px;
+  }
+
+  .right-arrow {
+    right: 3px;
+  }
+
+  /* Learn More 按鈕置中 */
+  .button-fullscreen {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* 👈 讓按鈕靠近底部 */
+    padding-bottom: 40px; /* 👈 保留一點空白距離底部 */
+    box-sizing: border-box;
+    height: 100vh; /* 滿版高度，才能控制位置 */
+  }
+  .learn-more-container {
+    position: static !important; /* ✅ 移除 fixed 定位 */
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .learn-more-btn {
+    max-width: 200px;
+    padding: 12px 24px;
+  }
+
+  .learn-more-btn:hover {
+    background-color: #0056b3;
+  }
 }

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teaching Highlights</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="video-page">
+    <!-- 🔸 漢堡選單按鈕 + 導覽列：負責導覽功能，適用於行動裝置 -->
+    <div class="hamburger-menu">
+      <!-- 選單切換按鈕 -->
+      <button class="menu-toggle" onclick="toggleMenu()">≡</button>
+
+      <!-- 導覽連結列表 -->
+      <div class="menu-items" id="menuItems">
+        <a href="index.html">首頁</a>
+        <a href="swimming1.html">課程收費</a>
+        <a href="swimming2.html">教練簡介</a>
+        <a href="video.html">教學實況</a>
+        <a href="swimming3.html">教學地點</a>
+        <a href="Contact Us.html">聯絡我們</a>
+      </div>
+    </div>
+    <div class="video-header">
+      <h1>Teaching Highlights</h1>
+    </div>
+
+    <div class="video-carousel">
+      <button class="arrow left-arrow" onclick="prevVideo()">&#171;</button>
+      <!-- 《 -->
+      <div class="video-wrapper">
+        <div class="video-item active">
+          <iframe
+            src="https://www.youtube.com/embed/tiwvbzBWlvg"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="video-item">
+          <iframe
+            src="https://www.youtube.com/embed/kOpIgh-eyMg"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="video-item">
+          <iframe
+            src="https://www.youtube.com/embed/JTwld8ccERM"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="video-item">
+          <iframe
+            src="https://www.youtube.com/embed/L9By0QGZZSw"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+      <button class="arrow right-arrow" onclick="nextVideo()">&#187;</button>
+    </div>
+
+    <div class="learn-more-bottom">
+      <a href="swimming3.html" class="learn-more-btn-center-btn">Learn More</a>
+    </div>
+
+    <!-- 🔸 JavaScript：控制導覽選單的開關 -->
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("menuItems");
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+      }
+
+      // 🔄 Video Carousel 控制
+      let currentIndex = 0;
+      const videos = document.querySelectorAll(".video-carousel .video-item");
+
+      function showVideo(index) {
+        videos.forEach((video, i) => {
+          video.classList.toggle("active", i === index);
+        });
+      }
+
+      function nextVideo() {
+        currentIndex = (currentIndex + 1) % videos.length;
+        showVideo(currentIndex);
+      }
+
+      function prevVideo() {
+        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+        showVideo(currentIndex);
+      }
+
+      // 初始化
+      showVideo(currentIndex);
+    </script>
+  </body>
+</html>
